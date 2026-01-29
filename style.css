@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+/* Portfolio Title Styling */
+.portfolio-title {
+    font-size: clamp(50px, 12vw, 140px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    opacity: 0.95;
+    text-shadow: 2px 2px 10px rgba(123, 159, 184, 0.1);
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Elegant Name Styling */
+.elegant-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Background Pattern */
+.pattern-bg {
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 100px,
+        rgba(123, 159, 184, 0.05) 100px,
+        rgba(123, 159, 184, 0.05) 200px
+    );
+    position: relative;
+}
+
+.pattern-bg::before {
+    content: 'Katherine Caviedes Katherine Caviedes Katherine Caviedes';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    font-size: 120px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(200, 200, 200, 0.15);
+    white-space: nowrap;
+    letter-spacing: 60px;
+    pointer-events: none;
+    line-height: 1.5;
+    overflow: hidden;
+    width: 200%;
+    text-align: center;
+}
+
+/* Profile Image Styling */
+.profile-image {
+    border-radius: 12px;
+    mask-image: linear-gradient(to bottom, #81A3BC 0%, #81A3BC 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #81A3BC 0%, #81A3BC 70%, transparent 100%);
+}
+
+/* Social Icons */
+.social-icon {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Scroll Button */
+.scroll-button {
+    cursor: pointer;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Grid Sections */
+.grid > div {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .portfolio-title {
+        font-size: 60px;
+    }
+    
+    .profile-image {
+        width: 300px;
+    }
+    
+    .pattern-bg::before {
+        font-size: 60px;
+        letter-spacing: 30px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-title {
+        font-size: 40px;
+    }
+    
+    .profile-image {
+        width: 250px;
+    }
+    
+    .social-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+    color: white;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    animation: none;
+}
+
+.whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background-color: #262626;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-left-color: #262626;
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-tooltip {
+        right: 66px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
