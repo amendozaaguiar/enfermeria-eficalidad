@@ -51,8 +51,59 @@ document.addEventListener('DOMContentLoaded', () => {
             // Hide tooltip after 5 seconds
             setTimeout(() => {
                 whatsappTooltip.classList.remove('show-tooltip');
-            }, 10000);
-        }, 5000);
+            }, 5000);
+        }, 10000);
+    }
+
+    // Unified scroll navigation button
+    const scrollBtn = document.getElementById('scrollNextBtn');
+    const sections = ['services', 'about', 'social-stats', 'videography', 'photography', 'top-video', 'packages', 'testimonials'];
+    
+    if (scrollBtn) {
+        scrollBtn.addEventListener('click', () => {
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            let currentSectionIndex = -1;
+            
+            // Find current section
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        currentSectionIndex = index;
+                    }
+                }
+            });
+            
+            // Scroll to next section or back to top
+            if (currentSectionIndex === -1 || currentSectionIndex < sections.length - 1) {
+                const nextSectionId = sections[currentSectionIndex + 1];
+                const nextSection = document.getElementById(nextSectionId);
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Last section, scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+        
+        // Hide button on last section (testimonials)
+        window.addEventListener('scroll', () => {
+            const testimonials = document.getElementById('testimonials');
+            if (testimonials) {
+                const rect = testimonials.getBoundingClientRect();
+                const isInTestimonials = rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2;
+                
+                if (isInTestimonials) {
+                    scrollBtn.style.opacity = '0.3';
+                } else {
+                    scrollBtn.style.opacity = '1';
+                }
+            }
+        });
     }
 });
 
