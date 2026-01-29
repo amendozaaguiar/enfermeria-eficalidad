@@ -40,6 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 150);
         });
     });
+
+    // Auto-show WhatsApp tooltip every 10 seconds
+    const whatsappTooltip = document.querySelector('.whatsapp-tooltip');
+    if (whatsappTooltip) {
+        setInterval(() => {
+            // Show tooltip
+            whatsappTooltip.classList.add('show-tooltip');
+            
+            // Hide tooltip after 5 seconds
+            setTimeout(() => {
+                whatsappTooltip.classList.remove('show-tooltip');
+            }, 10000);
+        }, 5000);
+    }
 });
 
 // Add smooth scroll behavior
