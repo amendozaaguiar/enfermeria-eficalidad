@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 whatsappTooltip.classList.remove('show-tooltip');
             }, 10000);
-        }, 3000);
+        }, 5000);
     }
 });
 
